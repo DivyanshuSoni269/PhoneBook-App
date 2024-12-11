@@ -9,7 +9,7 @@ public class DbConnect {
 		
 		try {
 		    Class.forName("com.mysql.cj.jdbc.Driver");
-	        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phonebook", "root", ""); 
+	        conn = DriverManager.getConnection("jdbc:mysql://mysql.railway.internal:3306/railway", "root", "bGZzhZvYJyBAcQSDgIuEBrEZhMxAErcQ"); 
 	       }
 		catch (Exception e) {
 	    	   e.printStackTrace();
