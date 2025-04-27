@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 90%; /* Adjust width for mobile */
+            max-width: 350px; /* Limit maximum width */
+        }
+
+        .login-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            margin-bottom: 10px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .language-select {
+            border: none;
+            padding: 8px;
+            font-size: 12px;
+            color: #8e8e8e;
+            align-self: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            height: 51px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+            position: relative; /* For placeholder animation */
+        }
+
+        .input-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            font-size: 14px;
+            box-sizing: border-box;
+            -webkit-appearance: none; /* Remove default input styling */
+            appearance: none;
+        }
+
+        .input-group label {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            font-size: 14px;
+            color: #8e8e8e;
+            pointer-events: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: 2px;
+            font-size: 10px;
+        }
+
+        .login-button {
+            background-color: #0095f6;
+            color: #fff;
+            border: none;
+            border-radius: 4px; /* More standard button radius */
+            padding: 8px; /* Adjust padding */
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+            width: 100%; /* Full width button */
+        }
+
+        .login-button:hover {
+            opacity: 0.8;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            color: #8e8e8e;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #dbdbdb;
+        }
+
+        .or {
+            margin: 0 10px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .facebook-login {
+            margin-bottom: 20px;
+        }
+
+        .facebook-button {
+            background-color: #fff; /* Facebook blue with white text is more common */
+            color: #385185;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .facebook-button img {
+            height: 20px;
+            margin-right: 8px; /* Adjust spacing */
+        }
+
+        .facebook-button:hover {
+            opacity: 0.8;
+        }
+
+        .forgot-password {
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: #00376b;
+            font-size: 12px; /* Adjust font size */
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 1px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 14px; /* Adjust font size */
+        }
+
+        .signup-box a {
+            color: #0095f6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .signup-box a:hover {
+            text-decoration: underline;
+        }
+
+        .app-badges {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px; /* Adjust font size */
+        }
+
+        .app-badges p {
+            margin-bottom: 10px;
+        }
+
+        .badges a {
+            margin: 0 5px;
+        }
+
+        .badges img {
+            height: 40px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0; /* Add padding to the footer */
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links li {
+            margin: 0 10px;
+        }
+
+        .footer-links a {
+            color: #8e8e8e;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            color: #8e8e8e;
+            font-size: 12px;
+        }
+
+        /* Media query for smaller screens (more aggressive adjustments) */
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                max-width: none;
+                padding: 30px; /* Increase padding on smaller screens */
+            }
+
+            .login-box, .signup-box {
+                border: none;
+                background-color: transparent;
+                padding: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+           
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="Instagram">
+            </div>
+            <form class="login-form" method="post" action="#">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="" required>
+                    <label for="username">Phone number, username, or email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="" required>
+                    <label for="password">Password</label>
+                </div>
+                <button type="submit" class="login-button">Log in</button>
+            </form>
+            <div class="separator">
+                <div class="line"></div>
+                <div class="or">OR</div>
+                <div class="line"></div>
+            </div>
+            <div class="facebook-login">
+                <button class="facebook-button">
+                    <img src="data:image/jpeg;base64,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"  style="border-radius: 100%;height: 20px; margin-right: 8px;" alt="Facebook">
+                    Log in with Facebook
+                </button>
+            </div>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+        </div>
+        <div class="signup-box">
+            Don't have an account? <a href="#">Sign up</a>
+        </div>
+        <div class="app-badges">
+            <p>Get the app.</p>
+            <div class="badges">
+                <a href="#"><img src="https://static.cdninstagram.com/rsrc.php/v4/yz/r/c5Rp7Ym-Klz.png" alt="Google Play" style="height: 40px;"></a>
+                <a href="#"><img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="App Store" style="height: 40px;"></a>
+            </div>
+        </div>
+        <div class="footer">
+            <ul class="footer-links">
+                <li><a href="#">Meta</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">API</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Top Accounts</a></li>
+                <li><a href="#">Hashtags</a></li>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">Instagram Lite</a></li>
+                <li><a href="#">Contact Uploading & Non-Users</a></li>
+            </ul>
+             <select aria-label="Switch Display Language" class="language-select">
+                <option value="af">English</option><option value="ar">العربية</option><option value="cs">Čeština</option><option value="da">Dansk</option><option value="de">Deutsch</option><option value="el">Ελληνικά</option><option value="en">Apsran</option><option value="en-gb">English (UK)</option><option value="es">Español (España)</option><option value="es-la">Español</option><option value="fa">فارسی</option><option value="fi">Suomi</option><option value="fr">Français</option><option value="he">עברית</option><option value="id">Bahasa Indonesia</option><option value="it">Italiano</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="ms">Bahasa Melayu</option><option value="nb">Norsk</option><option value="nl">Nederlands</option><option value="pl">Polski</option><option value="pt-br">Português (Brasil)</option><option value="pt">Português (Portugal)</option><option value="ru">Русский</option><option value="sv">Svenska</option><option value="th">ภาษาไทย</option><option value="tl">Filipino</option><option value="tr">Türkçe</option><option value="zh-cn">中文(简体)</option><option value="zh-tw">中文(台灣)</option><option value="bn">বাংলা</option><option value="gu">ગુજરાતી</option><option value="hi">हिन्दी</option><option value="hr">Hrvatski</option><option value="hu">Magyar</option><option value="kn">ಕನ್ನಡ</option><option value="ml">മലയാളം</option><option value="mr">मराठी</option><option value="ne">नेपाली</option><option value="pa">ਪੰਜਾਬੀ</option><option value="si">සිංහල</option><option value="sk">Slovenčina</option><option value="ta">தமிழ்</option><option value="te">తెలుగు</option><option value="ur">اردو</option><option value="vi">Tiếng Việt</option><option value="zh-hk">中文(香港)</option><option value="bg">Български</option><option value="fr-ca">Français (Canada)</option><option value="ro">Română</option><option value="sr">Српски</option><option value="uk">Українська</option>
+            </select>
+            <div class="copyright">
+                &copy; 2025 Instagram from Meta
+            </div>
+        </div>
+    </div>
+</body>
+</html>
